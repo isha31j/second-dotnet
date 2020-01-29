@@ -1,0 +1,282 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+    font-family: "Montserrat";
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.containerhome {
+    padding-right: 0px;
+    padding-left: 12px;
+    margin-right: 0px;
+    margin-left: 36px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: "MontserratM";
+    font-style: normal;
+}
+
+h1 {
+    font-family: MontserratM;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 23px;
+    color: white;
+    font-style: normal;
+}
+
+h2 {
+    font-family: MontserratM;
+    font-size: 19.3px;
+    font-weight: 600 !important;
+    line-height: 21px;
+    color: #484848;
+    font-style: normal;
+}
+
+h3 {
+    font-family: MontserratR;
+    font-size: 15px;
+    font-weight: 600 !important;
+    line-height: 18px;
+    color: #484848;
+    font-style: normal;
+}
+
+.chart-widget {
+    display: inline-block;
+    height: 297px;
+    border: 1px solid #E4E4E4;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+}
+
+.chart-widget-hdr {
+    width: 100%;
+    height: 40px;
+    display: inline-flex;
+    padding-left: 25px;
+    padding-right: 15px;
+    padding-top: 15px;
+    font-weight: bold;
+}
+
+.chartjs-size-monitor {
+    position: relative !important;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: "MontserratM";
+    font-style: normal;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.pl-4 {
+    padding-left: 1.3rem !important;
+}
+
+.widget {
+    width: 306px;
+    height: 74px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.toggle-div {
+    float: right;
+    border-radius: 3px;
+    margin: 0px;
+    height: 33.46px;
+    width: 33.46px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.toggle-img {
+    padding-left: 8px;
+    padding-top: 5px;
+}
+
+canvas{
+    font-family: MontserratM;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 11px;
+    color: #000000;
+}
+
+label {
+    margin-bottom: 0px;
+    margin-left: 1.5rem;
+    color: white;
+    font-family: MontserratM;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    width: 80%;
+}
+
+.widget-kpi {
+    text-align: right;
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    width: 20%;
+    margin-right: 20px;
+}
+
+@font-face{
+    font-family: MontserratR;
+    src:url(../fonts/montserrat/Montserrat-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: MontserratM;
+    src: url(../fonts/montserrat/Montserrat-Medium.ttf) format('truetype');
+}
+@font-face {
+    font-family: MontserratL;
+    src: url(../fonts/montserrat/Montserrat-Light.ttf) format('truetype');
+}
+
+.image-detail-canvas {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* The container */
+.container {
+    display: block;
+    position: absolute;
+    margin-top: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #669D69;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

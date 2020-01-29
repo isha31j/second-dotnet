@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/chart/dist/Chart.bundle.min.js"></script>
+    @*<script src="~/lib/chart/dist/chartjs-plugin-datalabels.min.js"></script>*@
+    <script src="~/lib/chart/dist/chartjs-plugin-piechart-outlabels.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-5 pt-2 pb-2 pr-4 pl-4" style="background-color:#669D69;">
+            <div style="width:100%">
+                <img src="~/images/BackNav.svg" />
+                <img style="margin-left:10px; margin-right:10px;" src="~/images/task_us_logo.svg" />
+                <img style="margin-left:12px; margin-right:14px;" src="~/images/Rectangle.svg" />
+                <h1 style="display:inline-block;">Menu Transcription</h1>
+            </div>
+            <img src="~/images/RightEllipses.svg" style="float:right;" />
+        </nav>
+    </header>
+    <div class="containerhome">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

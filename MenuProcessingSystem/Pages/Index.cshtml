@@ -1,0 +1,302 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-left" style="display:inline-block; width: 100%">
+    <h2 style="display:inline-block;"><b>Ticket Summary</b></h2>
+    <div id="showGrid" class="toggle-div" style="background-color: #E7E7E7; background-image:url('images/DisableGrid.svg'); margin-right: 35px; " onclick="toggleChartGrid(this);">
+    </div>
+    <div id="showChart" class="toggle-div" style="background-color: #669D69; background-image:url('images/ActiveChart.svg');" onclick="toggleChartGrid(this);">
+    </div>
+</div>
+
+<div id="chartDivContainer" class="pt-3" style="display:block;">
+    <div class="mr-3 widget" style="background: #6C88AF;">
+        @Html.Label("Menu Title confirmation")
+        <span class="widget-kpi">3</span>
+    </div>
+    <div class="mr-3 widget" style="background: #939BC7;">
+        @Html.Label("Choices confirmation")
+        <span class="widget-kpi">3</span>
+    </div>
+    <div class="mr-3 widget" style="background: #968AAF;">
+        @Html.Label("Options confirmation")
+        <span class="widget-kpi">1</span>
+    </div>
+    <div class="mr-3 widget" style="background: #77B3BE;">
+        @Html.Label("Price confirmation")
+        <span class="widget-kpi">0</span>
+    </div>
+    <div style="margin-top:35px;">
+        <div class="chart-widget" style="width:570px; margin-right:25px;">
+            <div class="chart-widget-hdr">
+                <h3 style="width:100%">Trend of Requests</h3>
+                <img src="~/images/barchart.svg" style="float:right; height:18px; width:18px;"/>
+            </div>
+            <div class="chart-container" style="width:570px; height:250px;">
+                <canvas id="TrendReqChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-widget" style="width:351px; margin-right:25px;">
+            <div class="chart-widget-hdr">
+                <h3 style="width:100%">Process Summary</h3>
+                <img src="~/images/piechart.svg" style="float:right; height:18px; width:18px;"/>
+            </div>
+            <div class="chart-container" style="width:351px; height:250px;">
+                <canvas id="ProcSumChart" style="margin-top:11%"></canvas>
+            </div>
+        </div>
+        <div class="chart-widget" style="width:301px;">
+            <div class="chart-widget-hdr">
+                <h3 style="width:100%"></h3>
+                <img src="~/images/filter.svg" style="float:right; height:18px; width:18px;" />
+            </div>
+            <div>
+                <label class="container">One
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Two
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                <!--<input type="checkbox" style="background-color:#669D69" checked />
+                <img src="~/images/edit.svg" />
+                <input type="checkbox" style="background-color:#669D69" checked />
+                <img src="~/images/edit.svg" />-->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="gridDivContainer" class="pt-3" style="display: none;">
+    grid will be here...
+</div>
+    <script type="text/javascript">
+        function toggleChartGrid(obj) {
+            var chartDiv = document.getElementById('chartDivContainer');
+            var gridDiv = document.getElementById('gridDivContainer');
+            if (gridDiv != null && chartDiv != null && gridDiv != undefined && chartDiv != undefined) {
+                var showGridDiv = document.getElementById('showGrid');
+                var showChartDiv = document.getElementById('showChart');
+                if (obj.id == 'showGrid') {
+                    chartDiv.style.display = 'none';
+                    gridDiv.style.display = 'block';
+                    if (showChartDiv != null && showGridDiv != null && showChartDiv != undefined && showGridDiv != undefined) {
+                        showGridDiv.style.backgroundColor = '#669D69';
+                        showGridDiv.style.backgroundImage = "url('images/ActiveGrid.svg')";
+                        showChartDiv.style.backgroundColor = '#E7E7E7';
+                        showChartDiv.style.backgroundImage = "url('images/DisableChart.svg')";
+                    }
+                }
+                else {
+                    chartDiv.style.display = 'block';
+                    gridDiv.style.display = 'none';
+                    if (showChartDiv != null && showGridDiv != null && showChartDiv != undefined && showGridDiv != undefined) {
+                        showGridDiv.style.backgroundColor = '#E7E7E7';
+                        showGridDiv.style.backgroundImage = "url('images/DisableGrid.svg')";
+                        showChartDiv.style.backgroundColor = '#669D69';
+                        showChartDiv.style.backgroundImage = "url('images/ActiveChart.svg')";
+                    }
+                }
+            }
+        }
+
+        /**Bar chart rendering**/
+        $(function () {
+            var chartName = "TrendReqChart";
+            var ctx = document.getElementById(chartName).getContext('2d');
+            var data = {
+                labels: ['23-11-2019', '24-11-2019', '25-11-2019', '26-11-2019'],
+                datasets: [{
+                    label: "Requests recieved",
+                    borderWidth: 1,
+                    backgroundColor: ['#669D69', '#669D69', '#669D69', '#669D69'],
+                    data: [62, 75, 85, 23]
+                },
+                {
+                    label: "Requests processed",
+                    borderWidth: 1,
+                    backgroundColor: ['#CD9C39', '#CD9C39', '#CD9C39', '#CD9C39'],
+                    data: [28, 35, 48, 10]
+                }]
+            };
+
+            var options = {
+                maintainAspectRatio: false,
+                title: {
+                    display: false,
+                    text: 'Trend of Requests',
+                    fontFamily: "'MontserratM'",
+                    fontColor: '#000000',
+                    fontStyle: 'normal'
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true,
+                        boxWidth: 8,
+                        fontSize: 9,
+                        fontFamily: "'MontserratM'",
+                        fontColor: '#000000',
+                        fontStyle: 'normal'
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 25,
+                            fontSize: 8,
+                            fontFamily: "'MontserratM'",
+                            fontColor: '#000000',
+                            fontStyle: 'normal'
+                        },
+                        gridLines: {
+                            display: true,
+                            offsetGridLines: false,
+                            color: "#CCCCCC"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Requests',
+                            fontSize: 9,
+                            fontFamily: "'MontserratM'",
+                            fontColor: '#000000',
+                            fontStyle: 'normal'
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            fontSize: 8,
+                            fontFamily: "'MontserratM'",
+                            fontColor: '#000000',
+                            fontStyle: 'normal'
+                        },
+                        gridLines: {
+                            display: true,
+                            offsetGridLines: false,
+                            color: "#CCCCCC"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date',
+                            fontSize: 9,
+                            fontFamily: "'MontserratM'",
+                            fontColor: '#000000',
+                            fontStyle: 'normal'
+                        }
+                    }]
+                },
+                layout: {
+                    padding: {
+                        left: 40,
+                        right: 40,
+                        top: 35,
+                        bottom: 15
+                    }
+                }
+            };
+
+            var myChart = new Chart(ctx, {
+                options: options,
+                data: data,
+                type: 'bar'
+            });
+        });
+
+        /**Dougnnut chart rendering**/
+        $(function () {
+            var chartName = "ProcSumChart";
+            var ctx = document.getElementById(chartName).getContext('2d');
+            var data = {
+                labels: ['Extracted\nSuccessfully', 'Confidence\nIssues', 'Accuracy\nIssues'],
+                datasets: [{
+                    borderWidth: 1,
+                    backgroundColor: ['#3E5E78', '#8ECEAD', '#D0D981'],
+                    data: [50, 30, 20]
+                }]
+            };
+
+            var options = {
+                maintainAspectRatio: true,
+                //zoomOutPercentage: 30,
+                cutoutPercentage: 35,
+                rotation: 30,
+                responsive: true,
+                tooltips: {
+                    enabled: false
+                },
+                legend: {
+                    display: false,
+                    labels: {
+                        usePointStyle: false
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 35,
+                        bottom: 0
+                    }
+                },
+                plugins: {
+                    legend: false,
+                    outlabels: {
+                        lineColor: '#000',
+                        backgroundColor: 'white',
+                        borderColor: 'white',
+                        text: '%l',
+                        color: 'black',
+                        lineWidth: 1,
+                        //stretch: 10,
+                        font: {
+                            resizable: true,
+                            minSize: 8,
+                            maxSize: 10,
+                            family: 'MontserratM'
+                        }
+                    }
+                }
+            };
+
+            var myChart = new Chart(ctx, {
+                options: options,
+                data: data,
+                showDatapoints: true,
+                type: 'doughnut'
+            });
+
+            Chart.plugins.register({
+              afterDatasetsDraw: function(chartInstance, easing) {
+                // To only draw at the end of animation, check for easing === 1
+                var ctx = chartInstance.chart.ctx;
+                chartInstance.data.datasets.forEach(function(dataset, i) {
+                  var meta = chartInstance.getDatasetMeta(i);
+                  if (!meta.hidden) {
+                    meta.data.forEach(function(element, index) {
+                      // Draw the text in black, with the specified font
+                      ctx.fillStyle = 'white';
+                      var fontSize = 10;
+                      var fontStyle = 'normal';
+                      var fontFamily = 'MontserratM';
+                      ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+                      // Just naively convert to string for now
+                      var dataString = dataset.data[index].toString();
+                      // Make sure alignment settings are correct
+                      ctx.textAlign = 'center';
+                      ctx.textBaseline = 'middle';
+                      var padding = 0;
+                      var position = element.tooltipPosition();
+                      ctx.fillText(dataString + '%', position.x, position.y - (fontSize / 2) - padding);
+                    });
+                  }
+                });
+              }
+            });
+
+        });
+    </script>
